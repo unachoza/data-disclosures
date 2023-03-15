@@ -12,6 +12,8 @@ type SearchResult = {
 
 const MAX_DESCRIPTION_LENGTH = 150;
 
+
+
 const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
@@ -48,6 +50,32 @@ const SearchBar: React.FC = () => {
       setSearchResults(results);
     }
   };
+
+//   const searchAndScrapePrivacyPolicy = async (searchTerm:string) => {
+//     const response = await fetch(
+//       `https://itunes.apple.com/search?term=${searchTerm}&entity=software`
+//     );
+//     const data = await response.json();
+//     const software = data.results[0]; // Assuming we want the first result
+  
+//     // Extract the website URL from the software object
+//     const websiteUrl = software.sellerUrl || software.artistViewUrl;
+  
+//     // Fetch the website HTML
+//     const websiteResponse = await fetch(websiteUrl);
+//     const websiteHtml = await websiteResponse.text();
+  
+//     // Use Cheerio to parse the HTML and extract the privacy policy text
+//     const cheerio = require('cheerio');
+//     const $ = cheerio.load(websiteHtml);
+//     const privacyPolicyUrl = $('a[href*="privacy"]').attr('href');
+//     const privacyPolicyResponse = await fetch(privacyPolicyUrl);
+//     const privacyPolicyHtml = await privacyPolicyResponse.text();
+//     const privacyPolicyText = $(privacyPolicyHtml).text();
+  
+//     // Return the privacy policy text
+//     return privacyPolicyText;
+//   };
 
   return (
     <div className='search-bar'>
